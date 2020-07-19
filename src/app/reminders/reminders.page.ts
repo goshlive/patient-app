@@ -13,13 +13,14 @@ export class RemindersPage implements OnInit {
   reminders: Reminder[];
   user: User;
 
-  private patientId: number = 5;
-  private ddMMyyyy: string = '18072020';
+  private patientId: number;
+  private ddMMyyyy: string = this.formatDate();
 
   constructor(private apiService: ApiService) {
     this.apiService.authUserObservable.subscribe(user => {
       if (user) {
         this.user = user;
+        this.patientId = this.user.ownerId;
       } else {
         this.user = null;
       }
@@ -45,13 +46,17 @@ export class RemindersPage implements OnInit {
     event.target.complete();
   }
 
-/*  
-  getReminder(reminderId: number) {
-    return {
-        ...this.reminders.find(reminder => {
-          return reminder.id === reminderId;
-      })
-    };
+  formatDate() {
+    var d = new Date(),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [day, month, year].join('');
   }
-*/
 }
