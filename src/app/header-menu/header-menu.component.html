@@ -1,0 +1,15 @@
+<div>
+  <ion-list>
+    <ion-menu-toggle auto-hide="true">
+      <ion-item [routerLink]="['/reminders']" routerDirection="forward">
+          <ion-icon [name]="'home'" slot="start"></ion-icon>Reminder List
+      </ion-item>
+      <ion-item [routerLink]="['/about']" routerDirection="forward">
+        <ion-icon [name]="'information-outline'" slot="start"></ion-icon>About Us
+      </ion-item>
+      <ion-item (click)="logout()">
+        <ion-icon [name]="'exit-outline'" slot="start"></ion-icon>Logout
+      </ion-item>
+    </ion-menu-toggle>
+  </ion-list>
+</div>

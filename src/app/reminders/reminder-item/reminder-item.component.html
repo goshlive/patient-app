@@ -1,0 +1,22 @@
+<ion-item [routerLink]="['/reminders', reminderItem.id]">      
+  <ion-icon slot="start" name="alarm-outline"></ion-icon>
+  <ion-label *ngIf="reminderItem.priority == 'HIGH'; else middle" color="danger">
+    <h5>{{ reminderItem.createDt }}</h5>
+    <h2>{{ reminderItem.message }}</h2>
+    <p>{{ reminderItem.priority }}</p>
+  </ion-label>
+  <ng-template #middle>
+    <ion-label *ngIf="reminderItem.priority == 'MIDDLE'; else low" color="warning">
+      <h5>{{ reminderItem.createDt }}</h5>
+      <h2>{{ reminderItem.message }}</h2>
+      <p>{{ reminderItem.priority }}</p>
+    </ion-label>
+  </ng-template>
+  <ng-template #low>
+    <ion-label color="success">
+      <h5>{{ reminderItem.createDt }}</h5>
+      <h2>{{ reminderItem.message }}</h2>
+      <p>{{ reminderItem.priority }}</p>
+    </ion-label>
+  </ng-template>
+</ion-item>

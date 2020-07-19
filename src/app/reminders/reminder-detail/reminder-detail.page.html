@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button defaultHref="/reminders"></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{ loadedReminder?.createDt }}</ion-card-subtitle>
+            <ion-card-title>{{ loadedReminder?.prescription }}</ion-card-title>
+            <h2>{{ loadedReminder?.message }} </h2>
+          </ion-card-header>
+          <ion-card-content>
+            <h6>-dr. {{ loadedReminder?.doctorName }}</h6>
+            <h6>-dr. {{ loadedReminder?.priority }}</h6>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="loadedReminder?.doneDt == null">
+      <ion-col></ion-col>
+      <ion-col>
+        <ng-template *ngIf="loadedReminder?.priority == 'HIGH'; else middle">
+        <ion-button size="large" color="danger" (click)="onMarkDone()">
+          <ion-icon name="checkmark-circle" slot="start"></ion-icon>Mark Done
+        </ion-button>
+      </ng-template>
+        <ng-template #middle>
+          <ion-button *ngIf="loadedReminder?.priority == 'MIDDLE'; else low" size="large" color="warning" (click)="onMarkDone()">
+            <ion-icon name="checkmark-circle" slot="start"></ion-icon>Mark Done
+          </ion-button>
+        </ng-template>
+        <ng-template #low>
+          <ion-button size="large" color="success" (click)="onMarkDone()">
+            <ion-icon name="checkmark-circle" slot="start"></ion-icon>Mark Done
+          </ion-button>
+        </ng-template>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

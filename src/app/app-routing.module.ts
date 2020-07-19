@@ -3,13 +3,30 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: 'reminders',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./reminders/reminders.module').then( m => m.RemindersPageModule)
+      },
+      {
+        path: ':reminderId',
+        loadChildren: () => import('./reminders/reminder-detail/reminder-detail.module').then( m => m.ReminderDetailPageModule)
+      }
+    ]
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./about/about/about.module').then( m => m.AboutPageModule)
   },
 ];
 
