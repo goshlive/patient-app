@@ -1,5 +1,10 @@
-<ion-item [routerLink]="['/reminders', reminderItem.id]">      
+<ion-item [routerLink]="['/reminders', reminderItem.id]">  
+  <div *ngIf="!reminderItem.doneDt">
   <ion-icon slot="start" name="alarm-outline"></ion-icon>
+  </div>
+  <div *ngIf="reminderItem.doneDt" >
+    <ion-icon slot="start" name="checkmark-done-outline"></ion-icon>
+  </div>
   <ion-label *ngIf="reminderItem.priority == 'HIGH'; else middle" color="danger">
     <h5>{{ reminderItem.createDt }}</h5>
     <h2>{{ reminderItem.message }}</h2>

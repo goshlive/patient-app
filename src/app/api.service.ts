@@ -9,7 +9,7 @@ import { User } from './login/user.model';
   providedIn: 'root'
 })
 export class ApiService {
-  url = 'http://localhost:8080/api';
+  url = 'http://62.171.189.140:9090/api';
 
   //private reminders: Reminder[] = [{"id":15,"docId":1,"presId":16,"doctorName":"fn_doctor1ln_doctor1","prescription":"test prescription1","message":"pres1 reminder 1","priority":"LOW","duration":1.0,"lateInd":null,"createDt":"2020-07-18T07:19:57.000+00:00","doneDt":null},{"id":16,"docId":1,"presId":16,"doctorName":"fn_doctor1ln_doctor1","prescription":"test prescription1","message":"pres1 reminder 2","priority":"MIDDLE","duration":2.0,"lateInd":null,"createDt":"2020-07-18T07:19:57.000+00:00","doneDt":null},{"id":17,"docId":1,"presId":17,"doctorName":"fn_doctor1ln_doctor1","prescription":"test prescription2","message":"pres2 reminder 2","priority":"MIDDLE","duration":2.0,"lateInd":null,"createDt":"2020-07-18T07:19:57.000+00:00","doneDt":null},{"id":18,"docId":1,"presId":17,"doctorName":"fn_doctor1ln_doctor1","prescription":"test prescription2","message":"pres2 reminder 3","priority":"HIGH","duration":3.0,"lateInd":null,"createDt":"2020-07-18T07:19:57.000+00:00","doneDt":null}]
   private reminders: Reminder[] = []
