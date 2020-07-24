@@ -47,7 +47,7 @@ export class ReminderDetailPage implements OnInit {
         role: 'cancel',
       },
       {
-        text: 'Done',
+        text: 'Yes',
         handler: () => {
           this.apiService.setDone(this.loadedReminder);
           this.router.navigate(['/reminders']);

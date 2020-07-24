@@ -19,29 +19,25 @@
           </ion-card-header>
           <ion-card-content>
             <h6>-dr. {{ loadedReminder?.doctorName }}</h6>
-            <h6>-dr. {{ loadedReminder?.priority }}</h6>
           </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
-    <ion-row *ngIf="loadedReminder?.doneDt == null">
+    <ion-row align-items-center>
       <ion-col></ion-col>
       <ion-col>
-        <ng-template *ngIf="loadedReminder?.priority == 'HIGH'; else middle">
-        <ion-button size="large" color="danger" (click)="onMarkDone()">
+        <ion-button  *ngIf="(!loadedReminder?.doneDt && loadedReminder?.priority === 'HIGH')" expand="block" color="danger" (click)="onMarkDone()">
           <ion-icon name="checkmark-circle" slot="start"></ion-icon>Mark Done
         </ion-button>
-      </ng-template>
-        <ng-template #middle>
-          <ion-button *ngIf="loadedReminder?.priority == 'MIDDLE'; else low" size="large" color="warning" (click)="onMarkDone()">
-            <ion-icon name="checkmark-circle" slot="start"></ion-icon>Mark Done
-          </ion-button>
-        </ng-template>
-        <ng-template #low>
-          <ion-button size="large" color="success" (click)="onMarkDone()">
-            <ion-icon name="checkmark-circle" slot="start"></ion-icon>Mark Done
-          </ion-button>
-        </ng-template>
+        <ion-button  *ngIf="(!loadedReminder?.doneDt && loadedReminder?.priority === 'MIDDLE')" expand="block" color="warning" (click)="onMarkDone()">
+          <ion-icon name="checkmark-circle" slot="start"></ion-icon>Mark Done
+        </ion-button>
+        <ion-button  *ngIf="(!loadedReminder?.doneDt && loadedReminder?.priority === 'LOW')" expand="block" color="success" (click)="onMarkDone()">
+          <ion-icon name="checkmark-circle" slot="start"></ion-icon>Mark Done
+        </ion-button>
+        <ion-button disabled *ngIf="(loadedReminder?.doneDt)" expand="block" color="dark">
+          <ion-icon name="checkmark-circle" slot="start"></ion-icon>Task has been done
+        </ion-button>
       </ion-col>
       <ion-col></ion-col>
     </ion-row>

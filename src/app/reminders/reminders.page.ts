@@ -14,7 +14,6 @@ export class RemindersPage implements OnInit {
   user: User;
 
   private patientId: number;
-  private ddMMyyyy: string = this.formatDate();
 
   constructor(private apiService: ApiService) {
     this.apiService.authUserObservable.subscribe(user => {
@@ -36,7 +35,7 @@ export class RemindersPage implements OnInit {
   }
 
   getReminders() {
-    this.apiService.getAllReminders(this.patientId, this.ddMMyyyy).subscribe((reminders : Reminder[])=>{
+    this.apiService.getAllReminders(this.patientId).subscribe((reminders : Reminder[])=>{
       this.reminders = reminders;
     });
   }
@@ -44,19 +43,5 @@ export class RemindersPage implements OnInit {
   refresh(event) {
     this.getReminders();
     event.target.complete();
-  }
-
-  formatDate() {
-    var d = new Date(),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
-
-    return [day, month, year].join('');
   }
 }
