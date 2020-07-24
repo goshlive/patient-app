@@ -25,19 +25,6 @@ export class ReminderDetailPage implements OnInit {
     this.apiService.getReminder(this.reminderId).subscribe((reminder : Reminder)=>{
       this.loadedReminder = reminder;
     })
-
-/*    
-    this.activatedRoute.paramMap.subscribe(paramMap => {
-      if (!paramMap.has('reminderId')) {
-        //redirect 
-        return;
-      }
-      const reminderId = paramMap.get('reminderId');
-      this.remindersService.getReminder(+reminderId).subscribe((reminder : Reminder)=>{
-        this.loadedReminder = reminder;
-      })
-    })
-*/    
   }
 
   onMarkDone(){

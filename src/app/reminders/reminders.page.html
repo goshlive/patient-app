@@ -12,6 +12,10 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-list>
-    <app-reminder-item *ngFor="let reminder of reminders"  [reminderItem]="reminder" ></app-reminder-item>
+    <ion-virtual-scroll [items]="reminders">
+      <div *virtualItem="let reminder">
+        <app-reminder-item [reminderItem]="reminder" ></app-reminder-item>
+      </div>
+    </ion-virtual-scroll>
   </ion-list>
 </ion-content>
